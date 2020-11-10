@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="./local-store.js"></script>
+	</head>
+	<body>
+		<script>
+			var localStore = window.installStore(window); //安装插件
+
+			//批量存值
+			localStore.set({
+				userName: "张三",
+				age: 30,
+				sex: "男",
+				job: "java开发",
+				workAddress: "Chengdu"
+			})
+
+			//设置1分钟过期时间
+			localStore.set("userId", "xxxx-xxx-xxx-xx", 1000 * 60);
+			
+			//单个删除
+			localStore.del("userId");
+			
+			//批量删除
+			localStore.del(["userId", "userName"]);
+			
+			//批量取值
+			let {userName, userInfo, userId} = localStore.get(["userName", "userInfo", "userId"]);
+		</script>
+	</body>
+</html>
